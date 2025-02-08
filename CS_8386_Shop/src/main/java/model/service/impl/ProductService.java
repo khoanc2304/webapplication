@@ -1,16 +1,16 @@
 package model.service.impl;
 
 import model.entity.User;
-import model.repository.UserRepository;
+import model.repository.productRepository.ProductRepository;
 import model.service.IService;
 
 import java.util.List;
 
-public class UserService implements IService {
-    private static UserRepository userRepository = new UserRepository();
+public class ProductService implements IService {
+    private static ProductRepository productRepository = new ProductRepository();
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll() ;
+    public List getAll() {
+        return productRepository.findAll();
     }
 
     @Override
@@ -24,12 +24,12 @@ public class UserService implements IService {
     }
 
     @Override
-    public User findById(int id) {
+    public Object findById(int id) {
         return null;
     }
 
     @Override
-    public List<User> findByName(String name) {
+    public List findByName(String name) {
         return List.of();
     }
 }

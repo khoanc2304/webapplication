@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,9 @@
         </div>
         <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
     </form>
+    <c:if test="${not empty param.error}">
+        <p style="color: red;">Sai tên đăng nhập hoặc mật khẩu!</p>
+    </c:if>
     <div class="text-center mt-3">
         <p>Chưa có tài khoản? <a href="#">Đăng ký</a></p>
     </div>

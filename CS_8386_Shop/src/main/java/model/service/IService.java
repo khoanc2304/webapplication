@@ -5,11 +5,11 @@ import model.entity.User;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IService<T> {
 
-    List<User> getAll();
+    List<T> getAll();
     void remove(int id);
     void update(int id, User user);
-    User findById(int id);
-    List<User> findByName(String name);
+    T findById(int id);
+    List<T> findByName(String name);
 }

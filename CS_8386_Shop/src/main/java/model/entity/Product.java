@@ -1,6 +1,6 @@
 package model.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Product {
     private int productID;
@@ -10,10 +10,8 @@ public class Product {
     private int stock;
     private String description;
     private String imageURL;
-    private Timestamp productCreatedDate;
-    private Timestamp productUpdatedDate;
 
-    public Product(int productID, int brandID, String name, double price, int stock, String description, String imageURL, Timestamp productCreatedDate, Timestamp productUpdatedDate) {
+    public Product(int productID, int brandID, String name, double price, int stock, String description, String imageURL) {
         this.productID = productID;
         this.brandID = brandID;
         this.name = name;
@@ -21,8 +19,6 @@ public class Product {
         this.stock = stock;
         this.description = description;
         this.imageURL = imageURL;
-        this.productCreatedDate = productCreatedDate;
-        this.productUpdatedDate = productUpdatedDate;
     }
 
     public int getProductID() { return productID; }
@@ -39,10 +35,7 @@ public class Product {
     public void setDescription(String description) { this.description = description; }
     public String getImageURL() { return imageURL; }
     public void setImageURL(String imageURL) { this.imageURL = imageURL; }
-    public Timestamp getProductCreatedDate() { return productCreatedDate; }
-    public void setProductCreatedDate(Timestamp productCreatedDate) { this.productCreatedDate = productCreatedDate; }
-    public Timestamp getProductUpdatedDate() { return productUpdatedDate; }
-    public void setProductUpdatedDate(Timestamp productUpdatedDate) { this.productUpdatedDate = productUpdatedDate; }
+
 
     @Override
     public String toString() {
@@ -54,8 +47,6 @@ public class Product {
                 ", stock=" + stock +
                 ", description='" + description + '\'' +
                 ", imageURL='" + imageURL + '\'' +
-                ", productCreatedDate=" + productCreatedDate +
-                ", productUpdatedDate=" + productUpdatedDate +
                 '}';
     }
 }
