@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
+    //
     private final IUserService userService = new UserService();
 
     @Override
@@ -59,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 
                     String userRole = user.getUserRole();
                     if ("admin".equals(userRole)) {
-                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                        resp.sendRedirect(req.getContextPath() + "/dashboard/dashboard.jsp");
                     } else if ("manager".equals(userRole)) {
                         resp.sendRedirect(req.getContextPath() + "/dashboard");
                     } else if ("employee".equals(userRole)) {

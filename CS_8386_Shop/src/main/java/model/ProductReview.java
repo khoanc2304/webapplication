@@ -3,6 +3,7 @@ package model;
 import java.sql.Timestamp;
 
 public class ProductReview {
+    //
     private int reviewID;
     private int customerID;
     private int productID;

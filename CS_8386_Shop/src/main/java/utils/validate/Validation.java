@@ -3,6 +3,7 @@ package utils.validate;
 import java.util.regex.Pattern;
 
 public class Validation {
+    //
     // Chỉ chứa 3-10 ký tự không dấu
     public static boolean validateUsername(String username) {
         if (username == null || username.isEmpty()) {

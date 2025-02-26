@@ -69,7 +69,7 @@
         <option value="admin" ${'admin' == param.userRole ? 'selected' : ''}>Admin</option>
       </select>
     </div>
-
+//
     <div class="d-flex justify-content-between">
       <button type="submit" class="btn btn-primary">Tạo Người Dùng</button>
       <a href="${pageContext.request.contextPath}/users?action=listUsers" class="btn btn-secondary">

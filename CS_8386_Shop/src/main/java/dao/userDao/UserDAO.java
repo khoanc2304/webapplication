@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDAO implements IUserDAO {
-    // Các câu truy vấn SQL
+    // Các câu truy vấn SQL//
     private static final String INSERT_USER = "INSERT INTO Users (username, password, fullName, email, phone, address, avatar, userCreatedDate, userUpdatedDate, userStatus, userRole) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_USERS = "SELECT * FROM Users";
     private static final String SELECT_USER_BY_ID = "SELECT * FROM Users WHERE userID = ?";

@@ -28,5 +28,5 @@ public interface IUserDAO {
 
     // Phương thức ánh xạ từ ResultSet sang đối tượng User
     User mapUser(ResultSet rs) throws SQLException;
-
+//
 }

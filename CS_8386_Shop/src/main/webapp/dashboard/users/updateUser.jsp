@@ -14,6 +14,7 @@
 <c:if test="${empty sessionScope.loggedInUser}">
   <c:redirect url="${pageContext.request.contextPath}/login" />
 </c:if>
+//
 <html>
 <head>
   <title>Update User</title>

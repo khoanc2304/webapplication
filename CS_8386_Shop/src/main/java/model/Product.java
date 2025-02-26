@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDateTime;
 
 public class Product {
+    //
     private int productID;
     private int brandID;
     private String name;

@@ -2,6 +2,7 @@ package model;
 
 
 public class OrderDetail {
+    //
     private int orderDetailID;
     private int orderID;
     private int productID;

@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Timestamp;
 
-public class Order {
+public class Order {//
     private int orderID;
     private int userID;
     private Timestamp orderDate;

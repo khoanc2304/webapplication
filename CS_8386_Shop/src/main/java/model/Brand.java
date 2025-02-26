@@ -3,6 +3,7 @@ package model;
 import java.sql.Timestamp;
 
 public class Brand {
+    //
     private int brandID;
     private String brandName;
     private String brandDescription;
