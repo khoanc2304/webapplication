@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DBConnection {
     private Connection connection;
-    private static final String URL = "jdbc:mysql://localhost:3306/8386shopupdate";
+    private static final String URL = "jdbc:mysql://localhost:3306/8386shop";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "tai@#04102004";
+    private static final String PASSWORD = "bahung123";
     public DBConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver"); // ddang ki csdl voi driver
