@@ -8,6 +8,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 ext {
@@ -26,6 +27,22 @@ dependencies {
 
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+
+//    //Thư viện logging của Apache.
+//    implementation 'org.apache.commons:commons-logging:1.1.3'
+
+
+    //Thư viện HTTP Client từ Apache.
+    implementation 'org.apache.httpcomponents:httpclient:4.5.5'
+
+    //Thư viện hỗ trợ HTTP Core từ Apache.
+    implementation 'org.apache.httpcomponents:httpcore:4.4.9'
+
+    //Thư viện Gson từ Google
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    //Một thư viện của Apache HTTP Components giúp dễ dàng xử lý các kết nối HTTP.
+    implementation 'org.apache.httpcomponents:fluent-hc:4.5.5'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

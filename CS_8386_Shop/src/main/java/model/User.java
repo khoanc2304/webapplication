@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class User {
     private int userID;
@@ -142,5 +143,14 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+    public String getFormattedCreatedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return userCreatedDate.format(formatter);
+    }
+
+    public String getFormattedUpdateDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return userUpdatedDate.format(formatter);
     }
 }

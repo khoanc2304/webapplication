@@ -1,6 +1,7 @@
 package controller;
 
 import model.User;
+import model.UserGoogle;
 import service.user.IUserService;
 import service.user.UserService;
 
@@ -26,28 +27,51 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String googleToken = req.getParameter("googleToken");
         HttpSession session = req.getSession(true);
         try {
-            Optional<User> loginUser = userService.findUserByUsernameAndPassword(username, password);
-            if (loginUser.isPresent()) {
-                User user = loginUser.get();
-                session.setAttribute("loggedInUser", user);
-                session.setAttribute("userRole", user.getUserRole());
+            if (googleToken != null && !googleToken.isEmpty()) {
+                // Đăng nhập qua Google chỉ dành cho khách hàng
+                UserGoogle userGoogle = LoginGoogleServlet.getUserInfo(googleToken);
+                if (userGoogle != null) {
+                    // Lưu thông tin người dùng vào session (không cần tạo mới người dùng trong cơ sở dữ liệu)
+                    session.setAttribute("googleId", userGoogle.getId());
+                    session.setAttribute("googleName", userGoogle.getName());
+                    session.setAttribute("googleEmail", userGoogle.getEmail());
+                    session.setAttribute("googlePicture", userGoogle.getPicture());
 
-                String userRole = user.getUserRole();
-                if ("admin".equals(userRole)) {
-                    resp.sendRedirect(req.getContextPath() + "/dashboard");
-                } else if ("manager".equals(userRole)) {
-                    resp.sendRedirect(req.getContextPath() + "/dashboard");
-                } else if ("employee".equals(userRole)) {
-                    resp.sendRedirect(req.getContextPath() + "/dashboard");
+                    // Đăng nhập thành công và điều hướng người dùng
+                    session.setAttribute("successMessage", "Đăng nhập thành công");
+                    resp.sendRedirect(req.getContextPath() + "/");
+                    return;
                 } else {
-                    resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                    session.setAttribute("errorMessage", "Không thể lấy thông tin người dùng từ Google.");
+                    resp.sendRedirect(req.getContextPath() + "/loginPage.jsp");
+                    return;
                 }
-                session.setAttribute("successMessage", "Đăng nhập thành công");
             } else {
-                session.setAttribute("errorMessage", "Sai tài khoản hoặc mật khẩu! Vui lòng thử lại!");
-                resp.sendRedirect(req.getContextPath() + "/WEB-INF/view/login/loginPage.jsp");
+                // Đăng nhập thông qua cơ sở dữ liệu
+                Optional<User> loginUser = userService.findUserByUsernameAndPassword(username, password);
+                if (loginUser.isPresent()) {
+                    User user = loginUser.get();
+                    session.setAttribute("loggedInUser", user);
+                    session.setAttribute("userRole", user.getUserRole());
+
+                    String userRole = user.getUserRole();
+                    if ("admin".equals(userRole)) {
+                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                    } else if ("manager".equals(userRole)) {
+                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                    } else if ("employee".equals(userRole)) {
+                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                    } else {
+                        resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                    }
+                    session.setAttribute("successMessage", "Đăng nhập thành công");
+                } else {
+                    session.setAttribute("errorMessage", "Sai tài khoản hoặc mật khẩu! Vui lòng thử lại!");
+                    resp.sendRedirect(req.getContextPath() + "/WEB-INF/view/login/loginPage.jsp");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,4 +79,4 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/WEB-INF/view/login/loginPage.jsp");
         }
     }
-}
+    }
