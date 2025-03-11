@@ -42,7 +42,7 @@ public class LoginGoogleServlet extends HttpServlet {
 
                 // Đăng nhập thành công và điều hướng người dùng
                 session.setAttribute("successMessage", "Đăng nhập thành công");
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect(request.getContextPath() + "/product.jsp");
             } else {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("errorMessage", "Không thể lấy thông tin người dùng từ Google.");

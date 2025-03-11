@@ -63,7 +63,7 @@ public class UserServlet extends HttpServlet {
         if ("customer".equals(loggedInUser.getUserRole())) {
             session.setAttribute("warningMessage", "Bạn không có quyền truy cập Dashboard");
             try {
-                resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                resp.sendRedirect(req.getContextPath() + "/product.jsp");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -106,7 +106,7 @@ public class UserServlet extends HttpServlet {
 
         if ("customer".equals(loggedInUser.getUserRole())) {
             session.setAttribute("warningMessage", "Bạn không có quyền xoá người dùng khác!");
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product.jsp");
             return;
         }
 
@@ -246,7 +246,7 @@ public class UserServlet extends HttpServlet {
 
         if ("customer".equals(loggedInUser.getUserRole())) {
             session.setAttribute("warningMessage", "Bạn không có quyền xem thông tin người dùng khác!");
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product.jsp");
             return;
         }
 
@@ -335,7 +335,7 @@ public class UserServlet extends HttpServlet {
 
         if ("customer".equals(loggedInUser.getUserRole())) {
             session.setAttribute("warningMessage", "Bạn không có quyền chỉnh sửa người dùng khác!");
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product.jsp");
             return;
         }
 
@@ -426,7 +426,7 @@ public class UserServlet extends HttpServlet {
 
         if ("customer".equals(loggedInUser.getUserRole())) {
             session.setAttribute("warningMessage", "Bạn không có quyền tạo người dùng khác!");
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product.jsp");
             return;
         }
 

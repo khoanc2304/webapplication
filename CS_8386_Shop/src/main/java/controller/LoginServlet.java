@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
                     } else if ("employee".equals(userRole)) {
                         resp.sendRedirect(req.getContextPath() + "/dashboard");
                     } else {
-                        resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                        resp.sendRedirect(req.getContextPath() + "/product.jsp");
                     }
                     session.setAttribute("successMessage", "Đăng nhập thành công");
                 } else {

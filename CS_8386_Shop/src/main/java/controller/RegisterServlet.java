@@ -88,11 +88,11 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("loggedInUser", newUser);
             session.setAttribute("successMessage", "Đăng ký tài khoản thành công!");
             System.out.println(newUser.getUserRole());
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product.jsp");
         } catch (Exception e) {
             e.printStackTrace();
             session.setAttribute("errorMessage", "Đã xảy ra lỗi khi tạo người dùng!");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/product.jsp").forward(req, resp);
         }
     }
     //
