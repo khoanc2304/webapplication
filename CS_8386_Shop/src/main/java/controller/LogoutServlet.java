@@ -10,7 +10,6 @@ import java.io.IOException;
 
 @WebServlet(name = "logout", urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
-    //
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
@@ -20,6 +19,6 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession newSession = req.getSession();
         newSession.setAttribute("successMessage", "Đăng xuất thành công!");
-        resp.sendRedirect(req.getContextPath() + "/loginPage.jsp");
+        resp.sendRedirect(req.getContextPath() + "/product");
     }
 }

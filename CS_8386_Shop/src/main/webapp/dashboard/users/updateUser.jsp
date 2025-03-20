@@ -20,10 +20,10 @@
   <title>Update User</title>
 </head>
 <body>
-<%--<!-- Gọi sidebar -->--%>
-<%--<jsp:include page="../../common/sidebar.jsp" />--%>
-<%--<!-- Gọi toast -->--%>
-<%--<jsp:include page="../../common/toast.jsp" />--%>
+<!-- Gọi sidebar -->
+<jsp:include page="../../common/sidebar.jsp" />
+<!-- Gọi toast -->
+<jsp:include page="../../common/toast.jsp" />
 
 <form action="${pageContext.request.contextPath}/users?action=updateUser" method="post" style="margin-top: 4rem">
   <div class="mb-3">

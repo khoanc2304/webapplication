@@ -1,7 +1,6 @@
 package model;
 
 public class ProductDetail {
-    //
     private int detailID;
     private int productID;
     private String attributeName;

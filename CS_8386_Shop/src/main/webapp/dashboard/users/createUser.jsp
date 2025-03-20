@@ -26,10 +26,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<%--<!-- Gọi sidebar -->--%>
-<%--<jsp:include page="../../common/sidebar.jsp" />--%>
-<%--<!-- Gọi toast -->--%>
-<%--<jsp:include page="../../common/toast.jsp" />--%>
+<!-- Gọi sidebar -->
+<jsp:include page="../../common/sidebar.jsp" />
+<!-- Gọi toast -->
+<jsp:include page="../../common/toast.jsp" />
 
 <div class="main-content" style="margin-top: 4rem">
   <form action="${pageContext.request.contextPath}/users?action=createUser" method="post">
@@ -69,7 +69,6 @@
         <option value="admin" ${'admin' == param.userRole ? 'selected' : ''}>Admin</option>
       </select>
     </div>
-//
     <div class="d-flex justify-content-between">
       <button type="submit" class="btn btn-primary">Tạo Người Dùng</button>
       <a href="${pageContext.request.contextPath}/users?action=listUsers" class="btn btn-secondary">

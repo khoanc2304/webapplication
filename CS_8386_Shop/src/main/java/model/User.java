@@ -154,4 +154,5 @@ public class User {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return userUpdatedDate.format(formatter);
     }
+
 }

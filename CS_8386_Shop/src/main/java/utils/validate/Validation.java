@@ -27,7 +27,8 @@ public class Validation {
         if (email == null || email.isEmpty()) {
             return false;
         }
-        String regex = "^[\\w._%+-]+@gmail\\.com$";
+        //String regex = "^[\\w._%+-]+@gmail\\.com$";
+        String regex = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         return Pattern.matches(regex, email);
     }
 }

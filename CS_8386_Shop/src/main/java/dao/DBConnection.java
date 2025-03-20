@@ -5,21 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private Connection connection;
-    private static final String URL = "jdbc:mysql://localhost:3306/8386shop";
+    private static Connection connection;
+    private static final String URL = "jdbc:mysql://localhost:3306/8386shop_new";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "bahung123";
-    public DBConnection() {
+    private static final String PASSWORD = "tai@#04102004";
+    public static Connection getConnection() throws SQLException {
+        Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver"); // ddang ki csdl voi driver
-            this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("kết nối thành công");
+            if (connection == null || connection.isClosed()) {
+                Class.forName("com.mysql.cj.jdbc.Driver");  // Đảm bảo sử dụng driver mới (com.mysql.cj.jdbc.Driver)
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                System.out.println("Kết nối thành công");
+            }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            throw new SQLException("Không thể kết nối đến cơ sở dữ liệu", e);
         }
-    }
-    public Connection getConnection() {
         return connection;
     }
-    //
+
 }

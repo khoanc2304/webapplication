@@ -21,11 +21,13 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("/loginPage.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String googleToken = req.getParameter("googleToken");
@@ -55,18 +57,21 @@ public class LoginServlet extends HttpServlet {
                 Optional<User> loginUser = userService.findUserByUsernameAndPassword(username, password);
                 if (loginUser.isPresent()) {
                     User user = loginUser.get();
-                    session.setAttribute("loggedInUser", user);
+                    session.setAttribute("userId",user.getUserID());
+                    session.setAttribute("loggedInUser", user.getFullName());
+                    session.setAttribute("userAvatar", user.getAvatar());
                     session.setAttribute("userRole", user.getUserRole());
+                    session.setAttribute("loggedInUser", user);
 
                     String userRole = user.getUserRole();
                     if ("admin".equals(userRole)) {
-                        resp.sendRedirect(req.getContextPath() + "/dashboard/dashboard.jsp");
+                        resp.sendRedirect("/dashboard");
                     } else if ("manager".equals(userRole)) {
-                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                        resp.sendRedirect("/dashboard");
                     } else if ("employee".equals(userRole)) {
-                        resp.sendRedirect(req.getContextPath() + "/dashboard");
+                        resp.sendRedirect(req.getContextPath() + "/dashboard/dashboard.jsp");
                     } else {
-                        resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                        resp.sendRedirect(req.getContextPath() + "/product");
                     }
                     session.setAttribute("successMessage", "Đăng nhập thành công");
                 } else {

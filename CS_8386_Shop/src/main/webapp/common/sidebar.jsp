@@ -265,7 +265,7 @@
 
                 <!-- User NOT LOGIN-->
                 <c:if test="${empty sessionScope.loggedInUser}">
-                    <a href="${pageContext.request.contextPath}/login.jsp" class="btn btn-outline-primary btn-sm me-2">Đăng Nhập</a>
+                    <a href="${pageContext.request.contextPath}/loginPage.jsp" class="btn btn-outline-primary btn-sm me-2">Đăng Nhập</a>
                     <a href="${pageContext.request.contextPath}/register.jsp" class="btn btn-outline-primary btn-sm">Đăng Ký</a>
                 </c:if>
             </div>
@@ -279,9 +279,8 @@
     <nav class="nav">
         <div>
             <!-- Logo -->
-            <a href="../index.jsp" class="nav_logo">
-                <img src="../img/Logo.png" alt="Logo" width="30px">
-                <span class="nav_logo-name">TanaShop</span>
+            <a href="product" class="nav_logo">
+                <img src="https://scontent.fdad3-5.fna.fbcdn.net/v/t1.15752-9/480148661_9011683048954377_8966679042114836256_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=59i_wTGvZt4Q7kNvgG1OR4k&_nc_oc=Adi6BVy88iPaGJmoV-DO0OWECBCkY2Ty_kHigT43IS5jeouOT48j6PAGtKjHEXj1ChwxMaUAoPUWa54FCMJEmz4z&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&oh=03_Q7cD1gF0WgRyL1OUp36J4UCDBM0YKOuIuydm1fDlCT8VluNHYw&oe=67E81504" alt="Logo" width="30px">
             </a>
 
             <!-- Navigation -->
@@ -289,7 +288,7 @@
                 <c:choose>
                     <c:when test="${not empty sessionScope.loggedInUser }">
                         <c:if test="${sessionScope.loggedInUser.userRole == 'customer'}">
-                            <a href="${pageContext.request.contextPath}/index.jsp" class="nav_link">
+                            <a href="${pageContext.request.contextPath}/product.jsp" class="nav_link">
                                 <i class='bx bx-home nav_icon'></i>
                                 <span class="nav_name">Trang Chủ</span>
                             </a>
@@ -314,19 +313,19 @@
                                 <i class='bx bx-user-circle nav_icon'></i>
                                 <span class="nav_name">Users</span>
                             </a>
-                            <a href="${pageContext.request.contextPath}/categories?action=listCategories" class="nav_link">
+                            <a href="${pageContext.request.contextPath}/brand?action=list" class="nav_link">
                                 <i class='bx bx-category nav_icon'></i>
-                                <span class="nav_name">Category</span>
+                                <span class="nav_name">Brand</span>
                             </a>
-                            <a href="${pageContext.request.contextPath}/product?action=listProducts" class="nav_link">
+                            <a href="${pageContext.request.contextPath}/product?action=list-admin" class="nav_link">
                                 <i class='bx bx-package nav_icon'></i>
                                 <span class="nav_name">Product</span>
                             </a>
-                            <a href="#" class="nav_link">
+                            <a href="${pageContext.request.contextPath}/orders" class="nav_link">
                                 <i class='bx bx-cart nav_icon'></i>
                                 <span class="nav_name">Cart</span>
                             </a>
-                            <a href="${pageContext.request.contextPath}/index?action=listProducts" class="nav_link">
+                            <a href="${pageContext.request.contextPath}/product" class="nav_link">
                                 <i class='bx bx-store nav_icon'></i>
                                 <span class="nav_name">All Product</span>
                             </a>

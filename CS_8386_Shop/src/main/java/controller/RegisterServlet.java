@@ -26,6 +26,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession(false);
 
         String username = req.getParameter("username");
@@ -88,12 +89,11 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("loggedInUser", newUser);
             session.setAttribute("successMessage", "Đăng ký tài khoản thành công!");
             System.out.println(newUser.getUserRole());
-            resp.sendRedirect(req.getContextPath() + "/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/product");
         } catch (Exception e) {
             e.printStackTrace();
             session.setAttribute("errorMessage", "Đã xảy ra lỗi khi tạo người dùng!");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/product").forward(req, resp);
         }
     }
-    //
 }

@@ -20,7 +20,6 @@ import java.io.IOException;
 
 @WebServlet(name = "logingoogleservlet", urlPatterns = {"/logingoogleservlet"})
 public class LoginGoogleServlet extends HttpServlet {
-    //
     private final IUserService userService = new UserService();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,7 +41,7 @@ public class LoginGoogleServlet extends HttpServlet {
 
                 // Đăng nhập thành công và điều hướng người dùng
                 session.setAttribute("successMessage", "Đăng nhập thành công");
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect( "/");
             } else {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("errorMessage", "Không thể lấy thông tin người dùng từ Google.");
@@ -56,9 +55,9 @@ public class LoginGoogleServlet extends HttpServlet {
     public static UserGoogle getUserInfo(String accessToken) throws IOException {
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
-
+        System.out.println("Raw response from Google: " + response); // In dữ liệu thô
         UserGoogle googlePojo = new Gson().fromJson(response, UserGoogle.class);
-
+        System.out.println("Parsed UserGoogle: " + googlePojo); // In đối tượng đã parse
         return googlePojo;
     }
 
@@ -81,8 +80,5 @@ public class LoginGoogleServlet extends HttpServlet {
         processRequest(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
-    }
+
 }

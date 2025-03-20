@@ -52,6 +52,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public int countUsers() {
+        return userDao.countUsers();
+    }
+
+    @Override
     public boolean deleteUserByUsername(String username) {
         return userDao.deleteUserByUsername(username);
     }

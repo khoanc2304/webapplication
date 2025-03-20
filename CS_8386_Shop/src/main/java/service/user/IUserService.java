@@ -21,6 +21,9 @@ public interface IUserService {
     // Update
     void updateUser(User user);
 
+    //Count
+    int countUsers();
+
     // Delete
     boolean deleteUserByUsername(String username);
 

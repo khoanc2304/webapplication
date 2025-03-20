@@ -26,7 +26,12 @@ public interface IUserDAO {
     // Delete
     boolean deleteUserByUsername(String username);
 
+    //Count
+    int countUsers();
+
     // Phương thức ánh xạ từ ResultSet sang đối tượng User
     User mapUser(ResultSet rs) throws SQLException;
-//
+
+    //update phone & address
+    void updatePhoneAndAddressUser(User user);
 }

@@ -3,7 +3,6 @@ package model;
 import java.sql.Timestamp;
 
 public class ProductReview {
-    //
     private int reviewID;
     private int customerID;
     private int productID;
@@ -13,6 +12,13 @@ public class ProductReview {
 
     public ProductReview(int reviewID, int customerID, int productID, int rating, String comment, Timestamp reviewDate) {
         this.reviewID = reviewID;
+        this.customerID = customerID;
+        this.productID = productID;
+        this.rating = rating;
+        this.comment = comment;
+        this.reviewDate = reviewDate;
+    }
+    public ProductReview(int customerID, int productID, int rating, String comment, Timestamp reviewDate) {
         this.customerID = customerID;
         this.productID = productID;
         this.rating = rating;

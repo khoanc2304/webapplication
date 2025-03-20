@@ -1,7 +1,6 @@
 package model;
 
 public class UserGoogle {
-    //
 
         private String id;
 

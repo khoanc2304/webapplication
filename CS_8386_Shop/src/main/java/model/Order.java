@@ -1,13 +1,19 @@
 package model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-public class Order {//
+public class Order {
     private int orderID;
     private int userID;
     private Timestamp orderDate;
     private double totalPrice;
     private String orderStatus;
+    private List<OrderDetail> orderDetail;
+    private String fullName;
+    private String email;
+    private String phone;   // Thêm thuộc tính phone
+    private String address;
 
     public Order(int orderID, int userID, Timestamp orderDate, double totalPrice, String orderStatus) {
         this.orderID = orderID;
@@ -15,6 +21,38 @@ public class Order {//
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
         this.orderStatus = orderStatus;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getOrderID() { return orderID; }
@@ -37,5 +75,12 @@ public class Order {//
                 ", totalPrice=" + totalPrice +
                 ", orderStatus='" + orderStatus + '\'' +
                 '}';
+    }
+    public void setOrderDetail(List<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
+    }
+
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
     }
 }

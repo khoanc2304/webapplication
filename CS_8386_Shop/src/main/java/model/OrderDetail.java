@@ -2,19 +2,20 @@ package model;
 
 
 public class OrderDetail {
-    //
+
     private int orderDetailID;
     private int orderID;
     private int productID;
     private int quantity;
-    private double unitPrice;
+    private double price;
+    private String productName; // Thêm thuộc tính này
 
-    public OrderDetail(int orderDetailID, int orderID, int productID, int quantity, double unitPrice) {
+    public OrderDetail(int orderDetailID, int orderID, int productID, int quantity, double price) {
         this.orderDetailID = orderDetailID;
         this.orderID = orderID;
         this.productID = productID;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
+        this.price = price;
     }
 
     public int getOrderDetailID() { return orderDetailID; }
@@ -25,17 +26,19 @@ public class OrderDetail {
     public void setProductID(int productID) { this.productID = productID; }
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
-    public double getUnitPrice() { return unitPrice; }
-    public void setUnitPrice(double unitPrice) { this.unitPrice = unitPrice; }
+    public double getPrice() {
+        return price;
+    }
 
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "orderDetailID=" + orderDetailID +
-                ", orderID=" + orderID +
-                ", productID=" + productID +
-                ", quantity=" + quantity +
-                ", unitPrice=" + unitPrice +
-                '}';
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
